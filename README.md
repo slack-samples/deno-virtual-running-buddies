@@ -9,8 +9,12 @@ This is a Deno template for the Virtual Running Buddies Sample App, an app for y
   - [Clone the Template](#clone-the-template)
 - [Create a Link Trigger](#create-a-link-trigger)
 - [Running Your Project Locally](#running-your-project-locally)
+- [Datastores](#datastores)
+- [Testing](#testing)
 - [Deploying Your App](#deploying-your-app)
+  - [Viewing Activity Logs](#viewing-activity-logs)
 - [Project Structure](#project-structure)
+- [Resources](#resources)
 
 ---
 
@@ -57,6 +61,16 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
+To create a Link Trigger for the Workflow in this template, run the following
+command:
+
+```zsh
+$ slack trigger create --trigger-def triggers/sample_trigger.ts
+```
+
+After selecting a Workspace, the output provided will include the Link Trigger
+Shortcut URL. Copy and paste this URL into a channel as a message, or add it as
+
 After selecting a Workspace, the output provided will include the link trigger
 shortcut URL. Copy and paste this URL into a channel as a message, or add it as
 a bookmark in a channel of the Workspace you selected.
@@ -84,6 +98,25 @@ Once running, click the
 
 To stop running locally, press `<CTRL> + C` to end the process.
 
+## Datastores
+
+If your app needs to store any data, a datastore would be the right place for
+that. For an example of a datastore, see `datastores/sample_datastore.ts`. Using
+a datastore also requires the `datastore:write`/`datastore:read` scopes to be
+present in your manifest.
+
+## Testing
+
+For an example of how to test a function, see
+`functions/sample_function_test.ts`. Test filenames should be suffixed with
+`_test`.
+
+Run all tests with `deno test`:
+
+```zsh
+$ deno test
+```
+
 ## Deploying Your App
 
 Once you're done with development, you can deploy the production version of your
@@ -96,6 +129,15 @@ $ slack deploy
 After deploying, [create a new link trigger](#create-a-link-trigger) for the
 production version of your app (not appended with `(dev)`). Once the trigger is
 invoked, the workflow should run just as it did in when developing locally.
+
+### Viewing Activity Logs
+
+Activity logs for the production instance of your application can be viewed with
+the `slack activity` command:
+
+```zsh
+$ slack activity
+```
 
 ## Project Structure
 
@@ -129,6 +171,14 @@ to the next step.
 [Triggers](https://api.slack.com/future/triggers) determine when workflows are
 executed. A trigger file describes a scenario in which a workflow should be run,
 such as a user pressing a button or after a specific event occurs.
+
+## Resources
+
+To learn more about developing with the CLI, you can visit the following guides:
+
+- [Creating a new app with the CLI](https://api.slack.com/future/create)
+- [Configuring your app](https://api.slack.com/future/manifest)
+- [Developing locally](https://api.slack.com/future/run)
 
 To view all documentation and guides available, visit the
 [Overview page](https://api.slack.com/future/overview).
