@@ -20,3 +20,4 @@ const DisplayLeaderboardTrigger: Trigger<typeof DisplayLeaderboardWorkflow.defin
 };
 
 export default DisplayLeaderboardTrigger;
+                                         
