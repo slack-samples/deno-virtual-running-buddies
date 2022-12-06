@@ -67,3 +67,4 @@ async ({ inputs, token }) => {
   }
 
 export default logFunction;
+                                        
