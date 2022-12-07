@@ -42,7 +42,7 @@ async ({ inputs, token } ) => {
 
     // Query the datastore for all the data we collected
     const all = await client.apps.datastore.query ({
-      datastore: DATASTORE,
+      datastore: RUN_DATASTORE,
     });
 
     // Query for dates of the past week (days 0-7)
@@ -50,7 +50,7 @@ async ({ inputs, token } ) => {
     date1.setDate(date1.getDate() - 7)
 
     const last7Days = await client.apps.datastore.query ({
-      datastore: DATASTORE,
+      datastore: RUN_DATASTORE,
       expression: "#date >= :one_week_ago",
       expression_attributes: { "#date": "rundate" },
       expression_values: { ":one_week_ago": date1 },
@@ -61,7 +61,7 @@ async ({ inputs, token } ) => {
     date2.setDate(date2.getDate() - 14)
 
     const last14Days = await client.apps.datastore.query ({
-      datastore: DATASTORE,
+      datastore: RUN_DATASTORE,
       expression: "#date >= :two_weeks_ago",
       expression_attributes: { "#date": "rundate" },
       expression_values: { ":two_weeks_ago": date2 },
@@ -82,19 +82,19 @@ async ({ inputs, token } ) => {
       }
     }
     // Calculate each runner's individual total and store it in a map
-    let distance_map = new Map<string, number>();
+    let distanceMap = new Map<string, number>();
     for (const item of all["items"]) {
-      distance_map.set(item.runner, item.distance + (distance_map.get(item.runner) || 0))
+      distanceMap.set(item.runner, item.distance + (distanceMap.get(item.runner) || 0))
     }
 
     // Compare each runners' total and order them from greatest to least
-    const sorted_map = new Map([...distance_map.entries()].sort((a, b) => b[1] - a[1]));
+    const sortedMap = new Map([...distanceMapp.entries()].sort((a, b) => b[1] - a[1]));
 
     // TODO: Convert user IDs to user names for displaying the leaderboard. Are user scopes supported?
 
     // Generate the leaderboard
     var leaders = '';
-    for (let [key, value] of sorted_map.entries()) {
+    for (let [key, value] of sortedMap.entries()) {
       leaders = leaders.concat(key.toString(), " ran ", value.toString(), " miles.\n");
     }
 
