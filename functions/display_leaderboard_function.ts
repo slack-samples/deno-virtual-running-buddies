@@ -102,8 +102,7 @@ async ({ inputs, token } ) => {
     const weeklyDiff = totaldistancewk2 - totaldistancewk1;
     const percentageDiff = (weeklyDiff/totaldistancewk2);
 
-    var stats = '';
-    stats = stats.concat("Your team ran ", totaldistancewk2.toString(), " miles this week: ", percentageDiff.toString(), "% difference from last week.");
+    const stats = `Your team ran ${totaldistancewk2} miles this week: a ${percentageDiff}% difference from last week.`;
 
     if (!all.ok) {
       return {
