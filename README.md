@@ -68,9 +68,6 @@ command:
 $ slack trigger create --trigger-def triggers/sample_trigger.ts
 ```
 
-After selecting a Workspace, the output provided will include the Link Trigger
-Shortcut URL. Copy and paste this URL into a channel as a message, or add it as
-
 After selecting a Workspace, the output provided will include the link trigger
 shortcut URL. Copy and paste this URL into a channel as a message, or add it as
 a bookmark in a channel of the Workspace you selected.
