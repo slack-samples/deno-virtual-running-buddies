@@ -46,7 +46,7 @@ async ({ inputs, token } ) => {
     });
 
     // Query for dates of the past week (days 0-7)
-    var date1 = new Date()
+    let date1 = new Date()
     date1.setDate(date1.getDate() - 7)
 
     const last7Days = await client.apps.datastore.query ({
@@ -57,7 +57,7 @@ async ({ inputs, token } ) => {
     });
 
     // Query for dates of the past 2 weeks (previous days 0-14)
-    var date2 = new Date()
+    let date2 = new Date()
     date2.setDate(date2.getDate() - 14)
 
     const last14Days = await client.apps.datastore.query ({
@@ -68,14 +68,14 @@ async ({ inputs, token } ) => {
     });
 
     // Total each runner's distances for the past week to get the team's total
-    var totaldistancewk1 = 0;
+    let totaldistancewk1 = 0;
     for (const item of all["items"]) {
       if (item.rundate > date1.toLocaleDateString('en-CA')) {
         totaldistancewk1 += item.distance;
       }
     }
     // Total each runner's distances for the week before last week to get the team's total
-    var totaldistancewk2 = 0;
+    let totaldistancewk2 = 0;
     for (const item of all["items"]) {
       if (item.rundate > date2.toLocaleDateString('en-CA') && item.rundate < date1.toLocaleDateString('en-CA')) {
         totaldistancewk2 += item.distance;
@@ -93,7 +93,7 @@ async ({ inputs, token } ) => {
     // TODO: Convert user IDs to user names for displaying the leaderboard. Are user scopes supported?
 
     // Generate the leaderboard
-    var leaders = '';
+    let leaders = '';
     for (let [key, value] of sortedMap.entries()) {
       leaders = leaders.concat(key.toString(), " ran ", value.toString(), " miles.\n");
     }
