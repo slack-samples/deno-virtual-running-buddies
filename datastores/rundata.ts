@@ -1,9 +1,9 @@
 import { DefineDatastore, Schema } from "deno-slack-sdk/mod.ts";
 
-export const DATASTORE = "running_datastore";
+export const RUN_DATASTORE = "running_datastore";
 
-export const RunningDatastore = DefineDatastore({
-  name: DATASTORE,
+const RunningDatastore = DefineDatastore({
+  name: RUN_DATASTORE,
   primary_key: "id",
   attributes: {
     id: {
@@ -20,3 +20,5 @@ export const RunningDatastore = DefineDatastore({
     },
   },
 });
+
+export default RunningDatastore;
