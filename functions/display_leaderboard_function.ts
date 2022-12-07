@@ -99,8 +99,8 @@ async ({ inputs, token } ) => {
     }
 
     // Compare the team's total for the past week to the week before that and calculate percentage difference.
-    var weeklyDiff = totaldistancewk2 - totaldistancewk1;
-    var percentageDiff = (weeklyDiff/totaldistancewk2);
+    const weeklyDiff = totaldistancewk2 - totaldistancewk1;
+    const percentageDiff = (weeklyDiff/totaldistancewk2);
 
     var stats = '';
     stats = stats.concat("Your team ran ", totaldistancewk2.toString(), " miles this week: ", percentageDiff.toString(), "% difference from last week.");
