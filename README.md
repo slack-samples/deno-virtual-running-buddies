@@ -1,6 +1,6 @@
 # Virtual Running Buddies Sample App
 
-This is a Deno template for the Virtual Running Buddies Sample App, an app for you and your friends to log your runs and compare your team's progress.
+The Virtual Running Buddies sample is an app for you and your friends to log runs and compare team progress.
 
 **Guide Outline**:
 
