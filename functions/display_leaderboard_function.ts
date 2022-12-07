@@ -112,7 +112,7 @@ async ({ inputs, token } ) => {
       };
     } else {
       return {
-        outputs: {leaders: leaders, stats: stats},
+        outputs: {leaders, stats},
       };
     }
 };
