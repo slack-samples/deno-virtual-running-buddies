@@ -1,7 +1,9 @@
 import { Trigger } from "deno-slack-api/types.ts";
 import DisplayLeaderboardWorkflow from "../workflows/display_leaderboard_workflow.ts";
 
-const DisplayWeeklyStats: Trigger<typeof DisplayLeaderboardWorkflow.definition> = {
+const DisplayWeeklyStats: Trigger<
+  typeof DisplayLeaderboardWorkflow.definition
+> = {
   name: "Display weekly stats",
   type: "scheduled",
   description: "Trigger to display a weekly stats",
@@ -12,9 +14,6 @@ const DisplayWeeklyStats: Trigger<typeof DisplayLeaderboardWorkflow.definition> 
     },
     channel: {
       value: "{{data.channel_id}}",
-    },
-    triggered_user: {
-      value: "{{data.user_id}}",
     },
   },
   schedule: {

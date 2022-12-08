@@ -1,5 +1,5 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import { RunningDatastore } from "./datastores/rundata.ts";
+import RunningDatastore from "./datastores/rundata.ts";
 import LogRunWorkflow from "./workflows/log_run_workflow.ts";
 import DisplayLeaderboardWorkflow from "./workflows/display_leaderboard_workflow.ts";
 
@@ -11,8 +11,8 @@ export default Manifest({
   outgoingDomains: [],
   datastores: [RunningDatastore],
   botScopes: [
-    "commands", 
-    "chat:write", 
+    "commands",
+    "chat:write",
     "chat:write.public",
     "datastore:read",
     "datastore:write",

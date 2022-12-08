@@ -10,22 +10,27 @@ const DisplayLeaderboardWorkflow = DefineWorkflow({
       channel: {
         type: Schema.slack.types.channel_id,
       },
-      triggered_user: {
-        type: Schema.slack.types.user_id,
+      interactivity: {
+        type: Schema.slack.types.interactivity,
       },
     },
-    required: ["channel", "triggered_user"],
+    required: ["channel", "interactivity"],
   },
 });
 
-const leaderboardFunctionStep = DisplayLeaderboardWorkflow.addStep(DisplayLeaderboardFunction, {
-  channel: DisplayLeaderboardWorkflow.inputs.channel,
-  triggered_user: DisplayLeaderboardWorkflow.inputs.triggered_user,
-});
+const leaderboardFunctionStep = DisplayLeaderboardWorkflow.addStep(
+  DisplayLeaderboardFunction,
+  {
+    channel: DisplayLeaderboardWorkflow.inputs.channel,
+    triggered_user:
+      DisplayLeaderboardWorkflow.inputs.interactivity?.interactor.id,
+  },
+);
 
 DisplayLeaderboardWorkflow.addStep(Schema.slack.functions.SendMessage, {
   channel_id: DisplayLeaderboardWorkflow.inputs.channel,
-  message: leaderboardFunctionStep.outputs.leaders + leaderboardFunctionStep.outputs.stats,
+  message:
+    `${leaderboardFunctionStep.outputs.leaders} + ${leaderboardFunctionStep.outputs.stats}`,
 });
 
 export default DisplayLeaderboardWorkflow;

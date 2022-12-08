@@ -1,7 +1,7 @@
 import { DefineFunction, Schema } from "deno-slack-sdk/mod.ts";
 import type { SlackFunctionHandler } from "deno-slack-sdk/types.ts";
 import { SlackAPI } from "deno-slack-api/mod.ts";
-import { DATASTORE } from "../datastores/rundata.ts";
+import { RUN_DATASTORE } from "../datastores/rundata.ts";
 
 export const LogRunFunction = DefineFunction({
   callback_id: "log_run_function",
@@ -14,11 +14,11 @@ export const LogRunFunction = DefineFunction({
         type: Schema.slack.types.user_id,
         description: "Runner",
       },
-        distance: {
+      distance: {
         type: Schema.types.number,
         description: "Distance",
       },
-        rundate: {
+      rundate: {
         type: Schema.slack.types.date,
         description: "Run date",
       },
@@ -36,16 +36,17 @@ export const LogRunFunction = DefineFunction({
   },
 });
 
-const logFunction: SlackFunctionHandler<typeof LogRunFunction.definition> = 
-async ({ inputs, token }) => {
+const logFunction: SlackFunctionHandler<typeof LogRunFunction.definition> =
+  async ({ inputs, token }) => {
     const { distance, rundate } = inputs;
-    const updatedMsg = `:athletic_shoe: You submitted ${distance} mile(s) on ${rundate}. Keep up the great work!`;
+    const updatedMsg =
+      `:athletic_shoe: You submitted ${distance} mile(s) on ${rundate}. Keep up the great work!`;
 
     const client = SlackAPI(token, {});
     const uuid = crypto.randomUUID();
 
     const putResponse = await client.apps.datastore.put({
-      datastore: DATASTORE,
+      datastore: RUN_DATASTORE,
       item: {
         id: uuid,
         runner: inputs.runner,
@@ -61,10 +62,9 @@ async ({ inputs, token }) => {
       };
     } else {
       return {
-        outputs: {updatedMsg: updatedMsg},
+        outputs: { updatedMsg: updatedMsg },
       };
     }
-  }
+  };
 
 export default logFunction;
-                                        
