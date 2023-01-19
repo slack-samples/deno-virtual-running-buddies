@@ -30,7 +30,7 @@ const leaderboardFunctionStep = DisplayLeaderboardWorkflow.addStep(
 DisplayLeaderboardWorkflow.addStep(Schema.slack.functions.SendMessage, {
   channel_id: DisplayLeaderboardWorkflow.inputs.channel,
   message:
-    `${leaderboardFunctionStep.outputs.leaders} + ${leaderboardFunctionStep.outputs.stats}`,
+    `${leaderboardFunctionStep.outputs.leaders}. ${leaderboardFunctionStep.outputs.stats}`,
 });
 
 export default DisplayLeaderboardWorkflow;

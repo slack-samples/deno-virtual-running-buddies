@@ -6,7 +6,7 @@ import DisplayLeaderboardWorkflow from "./workflows/display_leaderboard_workflow
 export default Manifest({
   name: "virtual-running-buddies",
   description: "Log runs with virtual running buddies!",
-  icon: "assets/shoes.png",
+  icon: "assets/icon.png",
   workflows: [LogRunWorkflow, DisplayLeaderboardWorkflow],
   outgoingDomains: [],
   datastores: [RunningDatastore],
