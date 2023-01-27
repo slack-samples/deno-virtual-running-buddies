@@ -1,7 +1,5 @@
 # Virtual Running Buddies Sample App
 
-The Virtual Running Buddies sample is an app for you and your friends to log runs and compare team progress.
-
 **Guide Outline**:
 
 - [Setup](#setup)
