@@ -38,7 +38,7 @@ export const DisplayLeaderboardFunction = DefineFunction({
 
 const leaderFunction: SlackFunctionHandler<
   typeof DisplayLeaderboardFunction.definition
-> = async ({ inputs, token }) => {
+> = async ({ _inputs, token }) => {
   const client = SlackAPI(token, {});
 
   // Query the datastore for all the data we collected
@@ -47,10 +47,10 @@ const leaderFunction: SlackFunctionHandler<
   });
 
   // Query for dates of the past week (days 0-7)
-  let sevenDaysDate = new Date();
+  const sevenDaysDate = new Date();
   sevenDaysDate.setDate(sevenDaysDate.getDate() - 7);
 
-  const last7Days = await client.apps.datastore.query({
+  const _last7Days = await client.apps.datastore.query({
     datastore: RUN_DATASTORE,
     expression: "#date >= :one_week_ago",
     expression_attributes: { "#date": "rundate" },
@@ -58,10 +58,10 @@ const leaderFunction: SlackFunctionHandler<
   });
 
   // Query for dates of the past 2 weeks (previous days 0-14)
-  let fourteenDaysDate = new Date();
+  const fourteenDaysDate = new Date();
   fourteenDaysDate.setDate(fourteenDaysDate.getDate() - 14);
 
-  const last14Days = await client.apps.datastore.query({
+  const _last14Days = await client.apps.datastore.query({
     datastore: RUN_DATASTORE,
     expression: "#date >= :two_weeks_ago",
     expression_attributes: { "#date": "rundate" },
@@ -86,7 +86,7 @@ const leaderFunction: SlackFunctionHandler<
     }
   }
   // Calculate each runner's individual total and store it in a map
-  let distanceMap = new Map<string, number>();
+  const distanceMap = new Map<string, number>();
   for (const item of all["items"]) {
     distanceMap.set(
       item.runner,
@@ -101,7 +101,7 @@ const leaderFunction: SlackFunctionHandler<
 
   // Generate the leaderboard
   let leaders = "";
-  for (let [key, value] of sortedMap.entries()) {
+  for (const [key, value] of sortedMap.entries()) {
     leaders = `${leaders} \n <@${key}> ran ${value} miles`;
   }
 
@@ -115,8 +115,11 @@ const leaderFunction: SlackFunctionHandler<
     percentageDiff = 0;
   }
 
-  const stats =
-    `Your team ran ${totaldistancewk1} miles this week: a ${percentageDiff}% difference from last week.`;
+  const stats = `Your team ran ${
+    totaldistancewk1.toFixed(2)
+  } miles this week: a ${
+    percentageDiff.toFixed(2)
+  }% difference from last week.`;
 
   if (!all.ok) {
     return {

@@ -39,8 +39,9 @@ export const LogRunFunction = DefineFunction({
 const logFunction: SlackFunctionHandler<typeof LogRunFunction.definition> =
   async ({ inputs, token }) => {
     const { distance, rundate } = inputs;
-    const updatedMsg =
-      `:athletic_shoe: You submitted ${distance} mile(s) on ${rundate}. Keep up the great work!`;
+    const updatedMsg = `:athletic_shoe: You submitted ${
+      distance.toFixed(2)
+    } mile(s) on ${rundate}. Keep up the great work!`;
 
     const client = SlackAPI(token, {});
     const uuid = crypto.randomUUID();
