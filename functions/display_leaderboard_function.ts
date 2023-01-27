@@ -107,11 +107,10 @@ const leaderFunction: SlackFunctionHandler<
 
   // Compare the team's total for the past week to the week before that and calculate percentage difference.
   const weeklyDiff = totaldistancewk2 - totaldistancewk1;
-  
   let percentageDiff = 0;
 
-  if (totaldistancewk2 !=0) {
-    percentageDiff = (weeklyDiff / totaldistancewk2);
+  if (totaldistancewk2 != 0) {
+    percentageDiff = weeklyDiff / totaldistancewk2;
   } else {
     percentageDiff = 0;
   }
