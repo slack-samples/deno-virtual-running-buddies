@@ -17,7 +17,7 @@ const DisplayWeeklyStats: Trigger<
     },
   },
   schedule: {
-    start_time: "2022-10-20T08:00:00Z",
+    start_time: new Date(new Date().getTime() + 60000).toISOString(),
     timezone: "EDT",
     frequency: {
       type: "weekly",
