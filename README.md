@@ -1,8 +1,8 @@
 # Virtual Running Buddies Sample App
 
 This is a social sample app for you and your friends to log your running 
-activites each week, and to compare your team's progress from one week to 
-the next with a leaderboard and stats.
+activites each week, and to compare your team's progress from one week to the 
+next with a leaderboard and stats.
 
 **Guide Outline**:
 
