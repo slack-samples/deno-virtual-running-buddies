@@ -1,4 +1,4 @@
-# Virtual Running Buddies Sample App
+# Deno Virtual Running Buddies Sample App
 
 This is a social sample app for you and your friends to log your running 
 activites each week, and to compare your team's progress from one week to the 
