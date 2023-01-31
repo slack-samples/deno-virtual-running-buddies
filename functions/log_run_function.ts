@@ -1,6 +1,4 @@
-import { DefineFunction, Schema } from "deno-slack-sdk/mod.ts";
-import type { SlackFunctionHandler } from "deno-slack-sdk/types.ts";
-import { SlackAPI } from "deno-slack-api/mod.ts";
+import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
 import { RUN_DATASTORE } from "../datastores/rundata.ts";
 
 export const LogRunFunction = DefineFunction({
@@ -26,46 +24,27 @@ export const LogRunFunction = DefineFunction({
     required: ["runner", "distance", "rundate"],
   },
   output_parameters: {
-    properties: {
-      updatedMsg: {
-        type: Schema.types.string,
-        description: "Updated message to be posted",
-      },
-    },
-    required: ["updatedMsg"],
+    properties: {},
+    required: [],
   },
 });
 
-const logFunction: SlackFunctionHandler<typeof LogRunFunction.definition> =
-  async ({ inputs, token }) => {
-    const { distance, rundate } = inputs;
-    const updatedMsg = `:athletic_shoe: You submitted ${
-      distance.toFixed(2)
-    } mile(s) on ${rundate}. Keep up the great work!`;
+export default SlackFunction(LogRunFunction, async ({ inputs, client }) => {
+  const { distance, rundate, runner } = inputs;
+  const uuid = crypto.randomUUID();
 
-    const client = SlackAPI(token, {});
-    const uuid = crypto.randomUUID();
+  const putResponse = await client.apps.datastore.put({
+    datastore: RUN_DATASTORE,
+    item: {
+      id: uuid,
+      runner: runner,
+      distance: distance,
+      rundate: rundate,
+    },
+  });
 
-    const putResponse = await client.apps.datastore.put({
-      datastore: RUN_DATASTORE,
-      item: {
-        id: uuid,
-        runner: inputs.runner,
-        distance: inputs.distance,
-        rundate: inputs.rundate,
-      },
-    });
-
-    if (!putResponse.ok) {
-      return {
-        error: putResponse.error,
-        outputs: {},
-      };
-    } else {
-      return {
-        outputs: { updatedMsg: updatedMsg },
-      };
-    }
-  };
-
-export default logFunction;
+  if (!putResponse.ok) {
+    return { error: `Failed to store run: ${putResponse.error}` };
+  }
+  return { outputs: {} };
+});
