@@ -1,6 +1,7 @@
 {
   "imports": {
     "deno-slack-sdk/": "https://deno.land/x/deno_slack_sdk@1.4.2/",
-    "deno-slack-api/": "https://deno.land/x/deno_slack_api@1.4.0/"
+    "deno-slack-api/": "https://deno.land/x/deno_slack_api@1.4.0/",
+    "mock-fetch/": "https://deno.land/x/mock_fetch@0.3.0/"
   }
 }
