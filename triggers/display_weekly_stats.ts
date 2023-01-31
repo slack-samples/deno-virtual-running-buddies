@@ -4,10 +4,10 @@ import DisplayLeaderboardWorkflow from "../workflows/display_leaderboard_workflo
 const DisplayWeeklyStats: Trigger<
   typeof DisplayLeaderboardWorkflow.definition
 > = {
-  name: "Display weekly stats",
   type: "scheduled",
-  description: "Trigger to display a weekly stats",
-  workflow: "#/workflows/display_leaderboard_workflow",
+  name: "Display weekly stats",
+  description: "Display weekly running stats on a schedule",
+  workflow: `#/workflows/${DisplayLeaderboardWorkflow.definition.callback_id}`,
   inputs: {
     interactivity: {
       value: "{{data.interactivity}}",
@@ -17,7 +17,7 @@ const DisplayWeeklyStats: Trigger<
     },
   },
   schedule: {
-    start_time: "2022-10-20T08:00:00Z",
+    start_time: new Date(new Date().getTime() + 60000).toISOString(),
     timezone: "EDT",
     frequency: {
       type: "weekly",
