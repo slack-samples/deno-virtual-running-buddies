@@ -63,7 +63,9 @@ async function distanceInWeek(
   client: SlackAPIClient,
   startDate: Date,
 ): Promise<{ total: number; error?: string }> {
-  const endDate = new Date(new Date().setDate(startDate.getDate() + 6));
+  const endDate = new Date(startDate);
+  endDate.setDate(endDate.getDate() + 6);
+  // const endDate = new Date(new Date().setDate(startDate.getDate() + 6));
 
   console.log(startDate);
   console.log(endDate);
