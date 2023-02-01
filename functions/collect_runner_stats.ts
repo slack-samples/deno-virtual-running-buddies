@@ -39,8 +39,8 @@ export default SlackFunction(CollectRunnerStatsFunction, async ({ client }) => {
     weekly_distance: number;
   }>();
 
-  const today = new Date();
-  const startOfLastWeek = new Date(new Date().setDate(today.getDate() - 6));
+  const startOfLastWeek = new Date();
+  startOfLastWeek.setDate(startOfLastWeek.getDate() - 6);
 
   // Add run statistics to the associated runner
   runs.items.forEach((run) => {

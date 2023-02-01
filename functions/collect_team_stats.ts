@@ -65,10 +65,6 @@ async function distanceInWeek(
 ): Promise<{ total: number; error?: string }> {
   const endDate = new Date(startDate);
   endDate.setDate(endDate.getDate() + 6);
-  // const endDate = new Date(new Date().setDate(startDate.getDate() + 6));
-
-  console.log(startDate);
-  console.log(endDate);
 
   const runs = await client.apps.datastore.query<
     typeof RunningDatastore.definition
