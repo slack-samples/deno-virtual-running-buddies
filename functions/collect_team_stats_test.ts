@@ -30,6 +30,9 @@ mf.mock("POST@/api/apps.datastore.query", async (args) => {
     run.rundate >= dates[":start_date"] && run.rundate <= dates[":end_date"]
   ));
 
+  console.log("day=", new Date().getUTCDate());
+  console.log(runs);
+
   return new Response(JSON.stringify({ ok: true, items: runs }));
 });
 
