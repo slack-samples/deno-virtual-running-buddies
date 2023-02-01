@@ -42,7 +42,7 @@ export const FormatLeaderboardFunction = DefineFunction({
 
 export default SlackFunction(FormatLeaderboardFunction, ({ inputs }) => {
   const teamStatsFormatted =
-    `Your team ran *${inputs.team_distance} miles* this week: a ${inputs.percent_change}% difference from last week.`;
+    `Your team ran *${inputs.team_distance} miles* this past week: a ${inputs.percent_change}% difference from the prior week.`;
 
   const runnerStatsFormatted = inputs.runner_stats.sort((a, b) =>
     b.weekly_distance - a.weekly_distance
