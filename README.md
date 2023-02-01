@@ -1,7 +1,7 @@
 # Deno Virtual Running Buddies Sample App
 
-This is a social sample app for you and your friends to log your running 
-activites each week, and to compare your team's progress from one week to the 
+This is a social sample app for you and your friends to log your running
+activites each week, and to compare your team's progress from one week to the
 next with a leaderboard and stats.
 
 **Guide Outline**:
@@ -23,7 +23,8 @@ next with a leaderboard and stats.
 ## Supported Workflows
 
 - **Log a run**: Collect and store info about a recent run.
-- **Display the leaderboard**: Show team statistics and highlight the top runners from the past week.
+- **Display the leaderboard**: Show team statistics and highlight the top
+  runners from the past week.
 
 ## Setup
 
@@ -68,8 +69,8 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the **Log a run** workflow in this sample, run the following
-command:
+To create a Link Trigger for the **Log a run** workflow in this sample, run the
+following command:
 
 ```zsh
 $ slack trigger create --trigger-def triggers/log_run_trigger.ts
@@ -105,8 +106,8 @@ To stop running locally, press `<CTRL> + C` to end the process.
 ## Datastores
 
 If your app needs to store any data, a datastore would be the right place for
-that. For an example of a datastore, see `datastores/run_data.ts`. Using
-a datastore also requires the `datastore:write`/`datastore:read` scopes to be
+that. For an example of a datastore, see `datastores/run_data.ts`. Using a
+datastore also requires the `datastore:write`/`datastore:read` scopes to be
 present in your manifest.
 
 ## Testing
