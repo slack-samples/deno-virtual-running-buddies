@@ -63,11 +63,11 @@ that Shortcut URLs will be different across each workspace, as well as between
 the Workspace that you'd like to create the trigger in. Each Workspace has a
 development version (denoted by `(dev)`), as well as a deployed version.
 
-To create a Link Trigger for the Workflow in this template, run the following
+To create a Link Trigger for the **Log a run** workflow in this sample, run the following
 command:
 
 ```zsh
-$ slack trigger create --trigger-def triggers/sample_trigger.ts
+$ slack trigger create --trigger-def triggers/log_run_trigger.ts
 ```
 
 After selecting a Workspace, the output provided will include the link trigger
@@ -100,14 +100,14 @@ To stop running locally, press `<CTRL> + C` to end the process.
 ## Datastores
 
 If your app needs to store any data, a datastore would be the right place for
-that. For an example of a datastore, see `datastores/sample_datastore.ts`. Using
+that. For an example of a datastore, see `datastores/run_data.ts`. Using
 a datastore also requires the `datastore:write`/`datastore:read` scopes to be
 present in your manifest.
 
 ## Testing
 
 For an example of how to test a function, see
-`functions/sample_function_test.ts`. Test filenames should be suffixed with
+`functions/collect_runner_stats_test.ts`. Test filenames should be suffixed with
 `_test`.
 
 Run all tests with `deno test`:

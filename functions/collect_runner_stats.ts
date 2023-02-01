@@ -1,5 +1,5 @@
 import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
-import RunningDatastore, { RUN_DATASTORE } from "../datastores/rundata.ts";
+import RunningDatastore, { RUN_DATASTORE } from "../datastores/run_data.ts";
 import { RunnerStatsType } from "../types/runner_stats.ts";
 
 export const CollectRunnerStatsFunction = DefineFunction({

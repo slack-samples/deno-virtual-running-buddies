@@ -1,5 +1,5 @@
 import { DefineWorkflow, Schema } from "deno-slack-sdk/mod.ts";
-import { LogRunFunction } from "../functions/log_run_function.ts";
+import { LogRunFunction } from "../functions/log_run.ts";
 
 const LogRunWorkflow = DefineWorkflow({
   callback_id: "log_run_workflow",

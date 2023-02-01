@@ -1,11 +1,11 @@
 import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
-import { RUN_DATASTORE } from "../datastores/rundata.ts";
+import { RUN_DATASTORE } from "../datastores/run_data.ts";
 
 export const LogRunFunction = DefineFunction({
-  callback_id: "log_run_function",
-  title: "Log run function",
-  description: "Function to log a run",
-  source_file: "functions/log_run_function.ts",
+  callback_id: "log_run",
+  title: "Log a run",
+  description: "Record a run in the datastore",
+  source_file: "functions/log_run.ts",
   input_parameters: {
     properties: {
       runner: {
