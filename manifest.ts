@@ -5,7 +5,7 @@ import DisplayLeaderboardWorkflow from "./workflows/display_leaderboard_workflow
 import { RunnerStatsType } from "./types/runner_stats.ts";
 
 export default Manifest({
-  name: "virtual-running-buddies",
+  name: "Virtual Running Buddies",
   description: "Log runs with virtual running buddies!",
   icon: "assets/icon.png",
   workflows: [LogRunWorkflow, DisplayLeaderboardWorkflow],
