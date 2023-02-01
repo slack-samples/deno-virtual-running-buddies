@@ -3,8 +3,8 @@ import { LogRunFunction } from "../functions/log_run.ts";
 
 const LogRunWorkflow = DefineWorkflow({
   callback_id: "log_run_workflow",
-  title: "Log run workflow",
-  description: "Workflow to log a run",
+  title: "Log a run",
+  description: "Collect and store info about a recent run",
   input_parameters: {
     properties: {
       interactivity: { type: Schema.slack.types.interactivity },

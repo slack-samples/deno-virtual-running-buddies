@@ -20,6 +20,11 @@ next with a leaderboard and stats.
 
 ---
 
+## Supported Workflows
+
+- **Log a run**: Collect and store info about a recent run.
+- **Display the leaderboard**: Show team statistics and highlight the top runners from the past week.
+
 ## Setup
 
 Before getting started, make sure you have a development workspace where you

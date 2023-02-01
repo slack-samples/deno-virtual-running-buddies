@@ -6,8 +6,9 @@ import { FormatLeaderboardFunction } from "../functions/format_leaderboard.ts";
 
 const DisplayLeaderboardWorkflow = DefineWorkflow({
   callback_id: "display_leaderboard_workflow",
-  title: "Display leaderboard workflow",
-  description: "Workflow to display a leaderboard to a channel",
+  title: "Display the leaderboard",
+  description:
+    "Show team statistics and highlight the top runners from the past week",
   input_parameters: {
     properties: {
       channel: { type: Schema.slack.types.channel_id },
