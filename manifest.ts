@@ -1,24 +1,24 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
-import SampleWorkflow from "./workflows/sample_workflow.ts";
-import SampleObjectDatastore from "./datastores/sample_datastore.ts";
+import RunningDatastore from "./datastores/run_data.ts";
+import LogRunWorkflow from "./workflows/log_run_workflow.ts";
+import DisplayLeaderboardWorkflow from "./workflows/display_leaderboard_workflow.ts";
+import { RunnerStatsType } from "./types/runner_stats.ts";
 
-/**
- * The app manifest contains the app's configuration. This
- * file defines attributes like app name and description.
- * https://api.slack.com/future/manifest
- */
 export default Manifest({
-  name: "deno-starter-template",
-  description: "A template for building Slack apps with Deno",
-  icon: "assets/default_new_app_icon.png",
-  workflows: [SampleWorkflow],
+  name: "Virtual Running Buddies",
+  description: "Log runs with virtual running buddies!",
+  icon: "assets/icon.png",
+  workflows: [LogRunWorkflow, DisplayLeaderboardWorkflow],
   outgoingDomains: [],
-  datastores: [SampleObjectDatastore],
+  datastores: [RunningDatastore],
+  types: [RunnerStatsType],
   botScopes: [
     "commands",
     "chat:write",
     "chat:write.public",
     "datastore:read",
     "datastore:write",
+    "channels:read",
+    "triggers:write",
   ],
 });
