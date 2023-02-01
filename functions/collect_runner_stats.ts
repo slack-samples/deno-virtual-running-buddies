@@ -44,8 +44,8 @@ export default SlackFunction(CollectRunnerStatsFunction, async ({ client }) => {
 
   // Add run statistics to the associated runner
   runs.items.forEach((run) => {
-    const isRecentRun =
-      run.rundate >= startOfLastWeek.toLocaleDateString("en-CA");
+    const isRecentRun = run.rundate >=
+      startOfLastWeek.toLocaleDateString("en-CA", { timeZone: "UTC" });
 
     // Find existing runner record or create new one
     const runner = runners.get(run.runner) ||

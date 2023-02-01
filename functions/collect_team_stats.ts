@@ -72,8 +72,8 @@ async function distanceInWeek(
     expression: "#date BETWEEN :start_date AND :end_date",
     expression_attributes: { "#date": "rundate" },
     expression_values: {
-      ":start_date": startDate.toLocaleDateString("en-CA"),
-      ":end_date": endDate.toLocaleDateString("en-CA"),
+      ":start_date": startDate.toLocaleDateString("en-CA", { timeZone: "UTC" }),
+      ":end_date": endDate.toLocaleDateString("en-CA", { timeZone: "UTC" }),
     },
   });
 

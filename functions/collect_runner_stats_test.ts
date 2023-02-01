@@ -6,11 +6,11 @@ import CollectRunnerStatsFunction from "./collect_runner_stats.ts";
 // Mocked days for the past week, prior week, and a distant week
 const today = new Date();
 const recentDate = new Date(new Date().setDate(today.getDate() - 2))
-  .toLocaleDateString("en-CA");
+  .toLocaleDateString("en-CA", { timeZone: "UTC" });
 const priorDate = new Date(new Date().setDate(today.getDate() - 7))
-  .toLocaleDateString("en-CA");
+  .toLocaleDateString("en-CA", { timeZone: "UTC" });
 const oldDate = new Date(new Date().setDate(today.getDate() - 20))
-  .toLocaleDateString("en-CA");
+  .toLocaleDateString("en-CA", { timeZone: "UTC" });
 
 // Example of runs stored in the datastore
 const mockRuns = [

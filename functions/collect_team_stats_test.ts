@@ -6,11 +6,11 @@ import CollectTeamStatsFunction from "./collect_team_stats.ts";
 // Mocked days for the past week, prior week, and a distant week
 const today = new Date();
 const recentDate = new Date(new Date().setDate(today.getDate() - 2))
-  .toLocaleDateString("en-CA");
+  .toLocaleDateString("en-CA", { timeZone: "UTC" });
 const priorDate = new Date(new Date().setDate(today.getDate() - 7))
-  .toLocaleDateString("en-CA");
+  .toLocaleDateString("en-CA", { timeZone: "UTC" });
 const oldDate = new Date(new Date().setDate(today.getDate() - 20))
-  .toLocaleDateString("en-CA");
+  .toLocaleDateString("en-CA", { timeZone: "UTC" });
 
 // Example of runs stored in the datastore
 const mockRuns = [
@@ -29,8 +29,6 @@ mf.mock("POST@/api/apps.datastore.query", async (args) => {
   const runs = mockRuns.filter((run) => (
     run.rundate >= dates[":start_date"] && run.rundate <= dates[":end_date"]
   ));
-
-  console.log(runs);
 
   return new Response(JSON.stringify({ ok: true, items: runs }));
 });
