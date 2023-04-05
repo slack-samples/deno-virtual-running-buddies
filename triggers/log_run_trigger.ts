@@ -1,4 +1,4 @@
-import { Trigger } from "deno-slack-api/types.ts";
+import { Trigger } from "deno-slack-sdk/types.ts";
 import LogRunWorkflow from "../workflows/log_run_workflow.ts";
 
 const LogRunTrigger: Trigger<typeof LogRunWorkflow.definition> = {
