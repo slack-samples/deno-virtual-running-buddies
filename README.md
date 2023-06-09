@@ -92,6 +92,7 @@ To manually create a trigger, use the following command:
 
 ```zsh
 $ slack trigger create --trigger-def triggers/log_run_trigger.ts
+$ slack trigger create --trigger-def triggers/display_leaderboard_trigger.ts
 ```
 
 ## Datastores
