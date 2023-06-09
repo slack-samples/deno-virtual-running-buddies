@@ -26,10 +26,10 @@ one week to the next with a leaderboard and stats.
 
 ## Setup
 
-Before getting started, first make sure you have a development workspace where
-you have permission to install apps. **Please note that the features in this
-project require that the workspace be part of
-[a Slack paid plan](https://slack.com/pricing).**
+> Before getting started, first make sure you have a development workspace where
+> you have permission to install apps. **Please note that the features in this
+> project require that the workspace be part of
+> [a Slack paid plan](https://slack.com/pricing).**
 
 ### Install the Slack CLI
 
