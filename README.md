@@ -1,6 +1,6 @@
 # Virtual Running Buddies
 
-Log your running activites each week, and to compare your team's progress from
+Log your running activities each week, and compare your team's progress from
 one week to the next with a leaderboard and stats.
 
 **Guide Outline**:
