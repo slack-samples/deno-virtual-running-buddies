@@ -37,7 +37,7 @@ const inputForm = LogRunWorkflow.addStep(
         name: "rundate",
         title: "Run date",
         type: Schema.slack.types.date,
-        default: new Date().toLocaleDateString("en-CA"),
+        default: new Date().toISOString().split("T")[0], // Date format: YYYY-MM-DD
       }, {
         name: "channel",
         title: "Channel to send entry to",

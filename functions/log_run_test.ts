@@ -3,7 +3,7 @@ import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
 import { assertEquals } from "https://deno.land/std@0.153.0/testing/asserts.ts";
 import LogRunFunction from "./log_run.ts";
 
-// Replaces globalThis.fetch with the mocked copy
+// Replaces global fetch with the mocked copy
 mf.install();
 
 mf.mock("POST@/api/apps.datastore.put", () => {
