@@ -37,12 +37,12 @@ Deno.test("Retrieve the empty set", async () => {
 
 Deno.test("Count only runs from the past week", async () => {
   mockRuns = [
-    { id: "R000", runner: "U0123456", distance: 8, rundate: "2023-01-05" },
-    { id: "R001", runner: "U0123456", distance: 4, rundate: "2023-01-04" },
-    { id: "R002", runner: "U7777777", distance: 2, rundate: "2023-01-02" },
+    { id: "R006", runner: "U0123456", distance: 8, rundate: "2023-01-05" },
+    { id: "R005", runner: "U0123456", distance: 4, rundate: "2023-01-04" },
+    { id: "R004", runner: "U7777777", distance: 2, rundate: "2023-01-02" },
     { id: "R003", runner: "U0123456", distance: 4, rundate: "2022-12-31" },
-    { id: "R004", runner: "U7777777", distance: 6, rundate: "2022-12-29" },
-    { id: "R005", runner: "U8888888", distance: 1, rundate: "2022-12-28" },
+    { id: "R002", runner: "U7777777", distance: 6, rundate: "2022-12-29" },
+    { id: "R001", runner: "U8888888", distance: 1, rundate: "2022-12-28" },
   ];
   const { outputs, error } = await CollectTeamStatsFunction(
     createContext({ inputs: {} }),

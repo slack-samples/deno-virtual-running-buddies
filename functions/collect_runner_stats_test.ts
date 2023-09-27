@@ -2,19 +2,20 @@ import * as mf from "mock-fetch/mod.ts";
 import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
 import { assertEquals } from "https://deno.land/std@0.153.0/testing/asserts.ts";
 import CollectRunnerStatsFunction from "./collect_runner_stats.ts";
+import { DatastoreItem } from "deno-slack-api/types.ts";
+import RunningDatastore from "../datastores/run_data.ts";
 
 // Mocked date for stable testing
 Date.now = () => new Date("2023-01-04").getTime();
 
 // Collection of runs stored in the mocked datastore
-// let mockRuns: DatastoreItem<typeof RunningDatastore.definition>[];
-const mockRuns = [
-  { runner: "U0123456", distance: 4, rundate: "2023-01-04" },
-  { runner: "U0123456", distance: 2, rundate: "2023-01-04" },
-  { runner: "U7777777", distance: 2, rundate: "2023-01-02" },
-  { runner: "U0123456", distance: 4, rundate: "2023-01-02" },
-  { runner: "U7777777", distance: 1, rundate: "2022-12-10" },
-  { runner: "U0123456", distance: 2, rundate: "2022-11-11" },
+const mockRuns: DatastoreItem<typeof RunningDatastore.definition>[] = [
+  { id: "R006", runner: "U0123456", distance: 4, rundate: "2023-01-04" },
+  { id: "R005", runner: "U0123456", distance: 2, rundate: "2023-01-04" },
+  { id: "R004", runner: "U7777777", distance: 2, rundate: "2023-01-02" },
+  { id: "R003", runner: "U0123456", distance: 4, rundate: "2023-01-02" },
+  { id: "R002", runner: "U7777777", distance: 1, rundate: "2022-12-10" },
+  { id: "R001", runner: "U0123456", distance: 2, rundate: "2022-11-11" },
 ];
 
 // Replaces globalThis.fetch with the mocked copy
