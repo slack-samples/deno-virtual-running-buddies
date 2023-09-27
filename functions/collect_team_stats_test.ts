@@ -1,5 +1,5 @@
 import * as mf from "mock-fetch/mod.ts";
-import { assertEquals } from "https://deno.land/std@0.153.0/testing/asserts.ts";
+import { assertEquals } from "std/testing/asserts.ts";
 import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
 import { DatastoreItem } from "deno-slack-api/types.ts";
 import CollectTeamStatsFunction from "./collect_team_stats.ts";

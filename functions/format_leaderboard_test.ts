@@ -1,8 +1,5 @@
 import { SlackFunctionTester } from "deno-slack-sdk/mod.ts";
-import {
-  assertEquals,
-  assertStringIncludes,
-} from "https://deno.land/std@0.153.0/testing/asserts.ts";
+import { assertEquals, assertStringIncludes } from "std/testing/asserts.ts";
 import FormatLeaderboardFunction from "./format_leaderboard.ts";
 
 const { createContext } = SlackFunctionTester("format_leaderboard");
