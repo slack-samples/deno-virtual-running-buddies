@@ -6,7 +6,7 @@ import CollectTeamStatsFunction from "./collect_team_stats.ts";
 import RunningDatastore from "../datastores/run_data.ts";
 
 // Mocked date for stable testing
-Date.now = () => new Date("2023-01-04").getTime();
+Date.now = () => new Date("2023-01-06").getTime();
 
 // Collection of runs stored in the mocked datastore
 let mockRuns: DatastoreItem<typeof RunningDatastore.definition>[];
@@ -37,11 +37,11 @@ Deno.test("Retrieve the empty set", async () => {
 
 Deno.test("Count only runs from the past week", async () => {
   mockRuns = [
-    { id: "R006", runner: "U0123456", distance: 8, rundate: "2023-01-05" },
-    { id: "R005", runner: "U0123456", distance: 4, rundate: "2023-01-04" },
+    { id: "R006", runner: "U0123456", distance: 8, rundate: "2023-01-07" },
+    { id: "R005", runner: "U0123456", distance: 4, rundate: "2023-01-06" },
     { id: "R004", runner: "U7777777", distance: 2, rundate: "2023-01-02" },
     { id: "R003", runner: "U0123456", distance: 4, rundate: "2022-12-31" },
-    { id: "R002", runner: "U7777777", distance: 6, rundate: "2022-12-29" },
+    { id: "R002", runner: "U7777777", distance: 6, rundate: "2022-12-31" },
     { id: "R001", runner: "U8888888", distance: 1, rundate: "2022-12-28" },
   ];
   const { outputs, error } = await CollectTeamStatsFunction(
@@ -54,7 +54,7 @@ Deno.test("Count only runs from the past week", async () => {
 
 Deno.test("Handle the infinite change", async () => {
   mockRuns = [
-    { id: "R001", runner: "U0123456", distance: 10, rundate: "2023-01-04" },
+    { id: "R001", runner: "U0123456", distance: 10, rundate: "2023-01-05" },
   ];
   const { outputs, error } = await CollectTeamStatsFunction(
     createContext({ inputs: {} }),

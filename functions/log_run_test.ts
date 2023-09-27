@@ -16,7 +16,7 @@ Deno.test("Successfully save a run", async () => {
   const inputs = {
     runner: "U0123456",
     distance: 4,
-    rundate: "2022-01-22",
+    rundate: "2023-01-13",
   };
 
   const { error } = await LogRunFunction(createContext({ inputs }));
