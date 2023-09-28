@@ -12,9 +12,8 @@ const DisplayLeaderboardWorkflow = DefineWorkflow({
   input_parameters: {
     properties: {
       channel: { type: Schema.slack.types.channel_id },
-      interactivity: { type: Schema.slack.types.interactivity },
     },
-    required: ["channel", "interactivity"],
+    required: ["channel"],
   },
 });
 
