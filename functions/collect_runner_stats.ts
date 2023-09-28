@@ -1,5 +1,5 @@
 import { DefineFunction, Schema, SlackFunction } from "deno-slack-sdk/mod.ts";
-import RunningDatastore, { RUN_DATASTORE } from "../datastores/run_data.ts";
+import { queryRunningDatastore } from "../datastores/run_data.ts";
 import { RunnerStatsType } from "../types/runner_stats.ts";
 
 export const CollectRunnerStatsFunction = DefineFunction({
@@ -16,6 +16,7 @@ export const CollectRunnerStatsFunction = DefineFunction({
       runner_stats: {
         type: Schema.types.array,
         items: { type: RunnerStatsType },
+        title: "Runner stats",
         description: "Weekly and all-time total distances for runners",
       },
     },
@@ -24,28 +25,27 @@ export const CollectRunnerStatsFunction = DefineFunction({
 });
 
 export default SlackFunction(CollectRunnerStatsFunction, async ({ client }) => {
-  // Query the datastore for all the data we collected
-  const runs = await client.apps.datastore.query<
-    typeof RunningDatastore.definition
-  >({ datastore: RUN_DATASTORE });
-
-  if (!runs.ok) {
-    return { error: `Failed to retrieve past runs: ${runs.error}` };
-  }
-
   const runners = new Map<typeof Schema.slack.types.user_id, {
     runner: typeof Schema.slack.types.user_id;
     total_distance: number;
     weekly_distance: number;
   }>();
 
-  const startOfLastWeek = new Date();
-  startOfLastWeek.setDate(startOfLastWeek.getDate() - 6);
+  const today = new Date(Date.now());
+  const startOfLastWeek = new Date(
+    new Date(Date.now()).setDate(today.getDate() - 6),
+  );
+
+  // Query the datastore for all the data we collected
+  const runs = await queryRunningDatastore(client);
+  if (!runs.ok) {
+    return { error: `Failed to retrieve past runs: ${runs.error}` };
+  }
 
   // Add run statistics to the associated runner
   runs.items.forEach((run) => {
-    const isRecentRun = run.rundate >=
-      startOfLastWeek.toLocaleDateString("en-CA", { timeZone: "UTC" });
+    const isRecentRun =
+      run.rundate >= startOfLastWeek.toISOString().substring(0, 10);
 
     // Find existing runner record or create new one
     const runner = runners.get(run.runner) ||

@@ -10,16 +10,19 @@ export const FormatLeaderboardFunction = DefineFunction({
     properties: {
       team_distance: {
         type: Schema.types.number,
+        title: "Team distance",
         description: "Total number of miles ran last week for the team",
       },
       percent_change: {
         type: Schema.types.number,
+        title: "Percent change",
         description:
           "Percent change of miles ran compared to the prior week for the team",
       },
       runner_stats: {
         type: Schema.types.array,
         items: { type: RunnerStatsType },
+        title: "Runner stats",
         description: "Weekly and all-time total distances for runners",
       },
     },
@@ -29,10 +32,12 @@ export const FormatLeaderboardFunction = DefineFunction({
     properties: {
       teamStatsFormatted: {
         type: Schema.types.string,
+        title: "Formatted team stats",
         description: "A formatted message with team stats",
       },
       runnerStatsFormatted: {
         type: Schema.types.string,
+        title: "Formatted runner stats",
         description: "An ordered leaderboard of runner stats",
       },
     },
