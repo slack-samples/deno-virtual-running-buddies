@@ -108,8 +108,8 @@ $ slack trigger create --trigger-def triggers/display_leaderboard_trigger.ts
 The scheduled trigger that displays the leaderboard on a weekly cadence requires
 configurations for which channel to post to. This is done with
 [environment variables](https://api.slack.com/automation/environment-variables#using-trigger-manifest)
-and can be configured by moving `.env.example` to `.env` then adding the
-channel ID of a channel with you and all of your running buddies:
+and can be configured by moving `.env.example` to `.env` then adding the channel
+ID of a channel with you and all of your running buddies:
 
 ```zsh
 $ mv .env.example .env
