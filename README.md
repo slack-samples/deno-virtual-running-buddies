@@ -86,13 +86,34 @@ Interacting with this link will run the associated workflow.
 **Note: triggers won't run the workflow unless the app is either running locally
 or deployed!**
 
+### Scheduled Triggers
+
+A [scheduled trigger](https://api.slack.com/automation/triggers/scheduled) runs
+workflows on a specific cadence and requires no interaction after being created.
+
+Similar to link triggers, these are unique to each version of your app and can
+be created multiple times with various inputs. After being created, and once the
+time is right, these will automatically invoke the workflow.
+
 ### Manual Trigger Creation
 
-To manually create a trigger, use the following command:
+To manually create triggers for logging runs and displaying stats for the whole
+team, use the following commands:
 
 ```zsh
 $ slack trigger create --trigger-def triggers/log_run_trigger.ts
 $ slack trigger create --trigger-def triggers/display_leaderboard_trigger.ts
+```
+
+The scheduled trigger that displays the leaderboard on a weekly cadence requires
+configurations for which channel to post to. This is done with
+[environment variables](https://api.slack.com/automation/environment-variables#using-trigger-manifest)
+and can be configured by moving `.env.example` to `.env` then adding the channel
+ID of a channel with you and all of your running buddies:
+
+```zsh
+$ mv .env.example .env
+$ slack trigger create --trigger-def triggers/display_weekly_stats.ts
 ```
 
 ## Datastores

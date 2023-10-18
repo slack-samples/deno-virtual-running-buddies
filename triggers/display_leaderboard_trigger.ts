@@ -10,9 +10,6 @@ const DisplayLeaderboardTrigger: Trigger<
   description: "Show stats for the team and individual runners",
   workflow: `#/workflows/${DisplayLeaderboardWorkflow.definition.callback_id}`,
   inputs: {
-    interactivity: {
-      value: TriggerContextData.Shortcut.interactivity,
-    },
     channel: {
       value: TriggerContextData.Shortcut.channel_id,
     },

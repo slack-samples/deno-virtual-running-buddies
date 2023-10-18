@@ -1,6 +1,7 @@
 import { Trigger } from "deno-slack-sdk/types.ts";
-import { TriggerContextData, TriggerTypes } from "deno-slack-api/mod.ts";
+import { TriggerTypes } from "deno-slack-api/mod.ts";
 import DisplayLeaderboardWorkflow from "../workflows/display_leaderboard_workflow.ts";
+import "std/dotenv/load.ts";
 
 const DisplayWeeklyStats: Trigger<
   typeof DisplayLeaderboardWorkflow.definition
@@ -10,11 +11,8 @@ const DisplayWeeklyStats: Trigger<
   description: "Display weekly running stats on a schedule",
   workflow: `#/workflows/${DisplayLeaderboardWorkflow.definition.callback_id}`,
   inputs: {
-    interactivity: {
-      value: TriggerContextData.Shortcut.interactivity,
-    },
     channel: {
-      value: TriggerContextData.Shortcut.channel_id,
+      value: Deno.env.get("RUNNERS_CHANNEL_ID")!,
     },
   },
   schedule: {
