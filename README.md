@@ -1,3 +1,7 @@
+### ⚠️ This sample has been archived and is no longer maintained.
+
+---
+
 # Virtual Running Buddies
 
 Log your running activities each week, and compare your team's progress from one
